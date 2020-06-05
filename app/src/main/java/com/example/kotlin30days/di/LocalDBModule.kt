@@ -15,9 +15,7 @@ class LocalDBModule {
     @Provides
     @Singleton
     internal fun provideDatabase(application: Application): AppDatabase {
-        return Room.databaseBuilder(
-            application, AppDatabase::class.java, "Kotlin30Days.db")
-            .allowMainThreadQueries().build()
+        return AppDatabase.getInstance(application)
     }
 
     @Provides

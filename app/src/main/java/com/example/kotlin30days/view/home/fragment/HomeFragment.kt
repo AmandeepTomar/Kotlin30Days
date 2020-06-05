@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.kotlin30days.R
 import com.example.kotlin30days.databinding.FragmentHomeBinding
 import com.example.kotlin30days.di.Injectable
+import com.example.kotlin30days.utility.Logger
 import com.example.kotlin30days.view.home.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -32,12 +33,12 @@ class HomeFragment : Fragment(),Injectable {
 
     private lateinit var binding: FragmentHomeBinding
 //
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
-//
-//    val repoViewModel: HomeViewModel by viewModels {
-//        viewModelFactory
-//    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    val homeViewModel: HomeViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,13 @@ class HomeFragment : Fragment(),Injectable {
         // Inflate the layout for this fragment
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Logger.setLog(message = "$homeViewModel  is Received")
+
+        //homeViewModel.getUsers()
     }
 
 

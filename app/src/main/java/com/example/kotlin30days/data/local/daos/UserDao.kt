@@ -9,14 +9,17 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User)
 
-    @Update
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUsers(contributors: List<User>)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateUser(user: User)
 
-    @Query("SELECT * FROM user WHERE login = :login")
+    @Query("SELECT * FROM user WHERE login =:login")
     fun findByLogin(login: String): LiveData<User>
 
-
-
+    @Query("SELECT * FROM user")
+    fun getAllUsers():List<User>
 
 
 

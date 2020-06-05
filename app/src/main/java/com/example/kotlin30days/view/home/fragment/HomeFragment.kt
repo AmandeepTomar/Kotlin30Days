@@ -1,11 +1,19 @@
 package com.example.kotlin30days.view.home.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import com.example.kotlin30days.R
+import com.example.kotlin30days.databinding.FragmentHomeBinding
+import com.example.kotlin30days.di.Injectable
+import com.example.kotlin30days.view.home.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.activity_home.*
+
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,10 +25,19 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),Injectable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var binding: FragmentHomeBinding
+//
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
+//
+//    val repoViewModel: HomeViewModel by viewModels {
+//        viewModelFactory
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +45,8 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -35,7 +54,23 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
+        return binding.root
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { // Handle action bar item clicks here. The action bar will
+        val id: Int = item.itemId
+        if (id == R.id.menusetting) {
+             NavHostFragment.findNavController(fragment).navigate(R.id.action_homeFragment_to_settingsFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
@@ -57,4 +92,6 @@ class HomeFragment : Fragment() {
                 }
             }
     }
+
+
 }

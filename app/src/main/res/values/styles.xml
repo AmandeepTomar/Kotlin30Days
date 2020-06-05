@@ -1,10 +1,57 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="textInputStyle">@style/AppTextField</item>
+        <item name="bottomSheetStyle">@style/RoundTopBottomSheet</item>
+        <item name="android:buttonStyle">@style/AppButton</item>
     </style>
+
+
+    <style name="AppTheme.NoStatusBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">
+            @drawable/splash_bg_item
+        </item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="AppTextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@android:color/white</item>
+    </style>
+
+
+
+    <style name="RoundTopBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/top_corner_round_shape</item>
+        <item name="behavior_peekHeight">700dp</item>
+
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/_16_sp</item>
+        <item name="android:lineSpacingExtra">@dimen/_0_sp</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:padding">@dimen/padding_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
+
 
 </resources>

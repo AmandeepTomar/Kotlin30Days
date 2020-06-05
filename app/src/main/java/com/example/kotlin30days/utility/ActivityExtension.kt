@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 
 internal fun <T : AppCompatActivity> AppCompatActivity.start(cls: Class<T>) {
     startActivity(Intent(this, cls))
@@ -27,4 +28,8 @@ internal fun View.setVisibleGone(boolean: Boolean) {
         View.VISIBLE
     } else View.GONE
 
+}
+
+internal fun View.showSnackBar(message:String){
+    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show();
 }

@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
+    <dimen name="_16_sp">16sp</dimen>
+    <dimen name="_0_sp">0sp</dimen>
+    <dimen name="padding_button">10dp</dimen>
+    <dimen name="_17sp">17sp</dimen>
+    <dimen name="_10dp">10dp</dimen>
 </resources>

@@ -72,6 +72,7 @@ class ListofReposFragment : Fragment(),Injectable {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         setUpRecyclerView()
 
         homeViewModel.geRepos("mojombo").observe(viewLifecycleOwner, Observer {

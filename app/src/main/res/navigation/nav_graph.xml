@@ -57,7 +57,11 @@
         android:id="@+id/listofReposFragment"
         android:name="com.example.kotlin30days.view.home.fragment.ListofReposFragment"
         android:label="fragment_listof_repos"
-        tools:layout="@layout/fragment_listof_repos" />
+        tools:layout="@layout/fragment_listof_repos" >
+        <argument
+            android:name="login"
+            app:argType="string" />
+    </fragment>
     <dialog
         android:id="@+id/settingFragment"
         android:name="com.example.kotlin30days.view.settings.SettingFragment"

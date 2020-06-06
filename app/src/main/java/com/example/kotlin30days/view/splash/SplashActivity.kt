@@ -16,15 +16,15 @@ class SplashActivity : AppCompatActivity(),HasAndroidInjector {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.SplashTheme)
+       // setTheme(R.style.SplashTheme)
         super.onCreate(savedInstanceState)
-      //  setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_splash)
 
 
         Handler().postDelayed({
             start(HomeActivity::class.java)
             finish()
-        }, 1000)
+        }, 3000)
     }
 
     override fun androidInjector() =dispatchingAndroidInjector

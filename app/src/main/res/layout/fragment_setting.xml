@@ -37,7 +37,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.button.MaterialButton
-
+        style="@style/AppButton"
         android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

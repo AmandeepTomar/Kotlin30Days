@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-
     app:startDestination="@id/loginFragment2">
 
     <fragment
@@ -66,5 +65,11 @@
         android:id="@+id/settingFragment"
         android:name="com.example.kotlin30days.view.settings.SettingFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting"
+       >
+        <action
+            android:id="@+id/action_settingFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2"
+           />
+    </dialog>
 </navigation>

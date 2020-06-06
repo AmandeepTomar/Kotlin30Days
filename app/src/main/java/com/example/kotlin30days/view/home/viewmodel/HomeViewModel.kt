@@ -12,6 +12,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val homeRepo: HomeRepo) :BaseViewModel() {

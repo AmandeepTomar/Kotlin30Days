@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.kotlin30days.R
 import com.example.kotlin30days.di.Injectable
 import com.example.kotlin30days.repo.LoginRepo
@@ -34,11 +37,11 @@ class SettingFragment : BottomSheetDialogFragment(), Injectable {
     private var param2: String? = null
 
     @Inject
-   lateinit var appPrf:AppPref
+    lateinit var appPrf: AppPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      //  setStyle(STYLE_NORMAL, R.style.AppTheme);
+        //  setStyle(STYLE_NORMAL, R.style.AppTheme);
 
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
@@ -59,7 +62,10 @@ class SettingFragment : BottomSheetDialogFragment(), Injectable {
         buttonLogout.setOnClickListener {
             LoginRepo.logout(Firebase.auth)
             appPrf.setLogin(false)
-            context?.startActivity(Intent(context,SplashActivity::class.java))
+
+            context?.startActivity(Intent(context, SplashActivity::class.java))
+            activity?.finish()
+
         }
     }
 

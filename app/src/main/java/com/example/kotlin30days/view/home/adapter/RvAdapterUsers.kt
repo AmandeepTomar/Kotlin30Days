@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin30days.R
@@ -38,6 +39,8 @@ class RvAdapterUsers : RecyclerView.Adapter<RvAdapterUsers.UsersVH>() {
             val login=dataList[position].login
             val action=HomeFragmentDirections.actionHomeFragmentToListofReposFragment(login)
             it.findNavController().navigate(action)
+
+
             }
 
           binding.buttonDetails.setOnClickListener{

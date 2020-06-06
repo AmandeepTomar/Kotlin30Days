@@ -3,12 +3,15 @@ package com.example.kotlin30days.view.home.fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin30days.R
 import com.example.kotlin30days.data.local.model.UserRepo
@@ -20,6 +23,7 @@ import com.example.kotlin30days.utility.Resource
 import com.example.kotlin30days.utility.showSnackBar
 import com.example.kotlin30days.view.home.adapter.RvAdapterRepos
 import com.example.kotlin30days.view.home.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
@@ -33,13 +37,16 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ListofReposFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListofReposFragment : Fragment(),Injectable {
+class ListofReposFragment : Fragment(), Injectable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     private lateinit var binding: FragmentListofReposBinding
-    private lateinit var rvAdapter:RvAdapterRepos
+    private lateinit var rvAdapter: RvAdapterRepos
+
+    private var login: String = "mojombo"
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -55,6 +62,7 @@ class ListofReposFragment : Fragment(),Injectable {
             param2 = it.getString(ARG_PARAM2)
         }
 
+setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -62,20 +70,27 @@ class ListofReposFragment : Fragment(),Injectable {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=DataBindingUtil.inflate(LayoutInflater.from(context),R.layout.fragment_listof_repos, container, false)
-        rvAdapter= RvAdapterRepos()
+        binding = DataBindingUtil.inflate(
+            LayoutInflater.from(context),
+            R.layout.fragment_listof_repos,
+            container,
+            false
+        )
+        rvAdapter = RvAdapterRepos()
         return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+        arguments?.let {
+            val args = ListofReposFragmentArgs.fromBundle(requireArguments())
+            login = args.login
+        }
 
         setUpRecyclerView()
 
-        homeViewModel.geRepos("mojombo").observe(viewLifecycleOwner, Observer {
+        homeViewModel.geRepos(login).observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.LOADING -> {
                     Logger.setLog("loading", "start loading")
@@ -83,8 +98,8 @@ class ListofReposFragment : Fragment(),Injectable {
                 }
                 Resource.SUCCESS -> {
                     // here we need to setup recyclerview
-                    val list=it.data as List<UserRepo>
-                    Logger.setLog("here",list.toString())
+                    val list = it.data as List<UserRepo>
+                    Logger.setLog("here", list.toString())
                     rvAdapter.addDataList(list)
                     homeViewModel.isLoading = false
 
@@ -100,9 +115,25 @@ class ListofReposFragment : Fragment(),Injectable {
 
     private fun setUpRecyclerView() {
         binding.listOfReposRecyclerView.apply {
-            layoutManager=LinearLayoutManager(context)
-            adapter=rvAdapter
+            layoutManager = LinearLayoutManager(context)
+            adapter = rvAdapter
         }
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean { // Handle action bar item clicks here. The action bar will
+        val id: Int = item.itemId
+        if (id == android.R.id.home) {
+            NavHostFragment.findNavController(fragment).popBackStack()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

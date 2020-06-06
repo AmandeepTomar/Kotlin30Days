@@ -35,7 +35,8 @@ class RvAdapterUsers : RecyclerView.Adapter<RvAdapterUsers.UsersVH>() {
           dataList[position].avatarUrl?.let { binding.profileImage.setImage(it) }
         binding.buttonRepos.setOnClickListener {
                 // we open new fragment here
-            val action=HomeFragmentDirections.actionHomeFragmentToListofReposFragment(dataList[position].login)
+            val login=dataList[position].login
+            val action=HomeFragmentDirections.actionHomeFragmentToListofReposFragment(login)
             it.findNavController().navigate(action)
             }
 

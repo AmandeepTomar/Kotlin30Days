@@ -1,5 +1,3 @@
-# Kotlin30Days
-
 # Kotlin30Days : 30DaysOfKotlin
 
 Its a simple project to combine all the learning that we have learned during the course time . 

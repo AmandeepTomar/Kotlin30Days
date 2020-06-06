@@ -4,10 +4,10 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="textInputStyle">@style/AppTextField</item>
-        <item name="bottomSheetStyle">@style/RoundTopBottomSheet</item>
         <item name="android:buttonStyle">@style/AppButton</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
 
@@ -31,6 +31,9 @@
         <item name="boxBackgroundColor">@android:color/white</item>
     </style>
 
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/RoundTopBottomSheet</item>
+    </style>
 
 
     <style name="RoundTopBottomSheet" parent="Widget.Design.BottomSheet.Modal">

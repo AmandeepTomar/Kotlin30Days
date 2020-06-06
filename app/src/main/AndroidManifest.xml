@@ -20,6 +20,12 @@
         <activity android:name=".view.home.HomeActivity">
 
         </activity>
+
+        <activity
+            android:name=".view.webview.WebViewActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoStatusBar" />
     </application>
 
 </manifest>

@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.kotlin30days.R
 import com.example.kotlin30days.databinding.FragmentRegisterBinding
+import com.example.kotlin30days.di.Injectable
+import com.example.kotlin30days.utility.AppPref
 import com.example.kotlin30days.utility.Logger
 import com.example.kotlin30days.utility.Resource
 import com.example.kotlin30days.utility.showSnackBar
@@ -20,7 +22,7 @@ import com.example.kotlin30days.view.login.model.LoginResponse
 import com.example.kotlin30days.view.login.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.register
-
+import javax.inject.Inject
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,12 +35,16 @@ private const val ARG_PARAM2 = "param2"
  * Use the [RegisterFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(), Injectable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: LoginViewModel
+
+
+    @Inject
+    lateinit var pref: AppPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +81,7 @@ class RegisterFragment : Fragment() {
                         val response = it.data as LoginResponse
                         Logger.setLog(message = response.toString())
                         resetEditText()
+                        pref.setLogin(true)
                         view.findNavController()
                             .navigate(R.id.action_registerFragment_to_homeFragment)
                     }

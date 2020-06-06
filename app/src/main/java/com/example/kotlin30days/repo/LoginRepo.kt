@@ -19,4 +19,8 @@ object LoginRepo {
         return  auth.createUserWithEmailAndPassword(username, password)
     }
 
+    fun logout(auth: FirebaseAuth){
+        return auth.signOut()
+    }
+
 }

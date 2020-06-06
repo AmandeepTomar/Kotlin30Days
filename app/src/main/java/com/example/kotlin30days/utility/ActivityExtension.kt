@@ -2,9 +2,12 @@ package com.example.kotlin30days.utility
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
 internal fun <T : AppCompatActivity> AppCompatActivity.start(cls: Class<T>) {
@@ -32,4 +35,8 @@ internal fun View.setVisibleGone(boolean: Boolean) {
 
 internal fun View.showSnackBar(message:String){
     Snackbar.make(this, message, Snackbar.LENGTH_LONG).show();
+}
+
+fun ImageView.setImage(url: String){
+    Glide.with(this).load(url).into(this)
 }

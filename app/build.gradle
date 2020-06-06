@@ -24,7 +24,6 @@ android {
     }
 
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -53,7 +52,7 @@ android {
     productFlavors {
         demo {
             dimension "version"
-          //  applicationIdSuffix ".dev"
+            //  applicationIdSuffix ".dev"
             applicationId "com.example.kotlin30days"
             signingConfig signingConfigs.release
             resValue "string", "app_name", "30 Days Kotlin Debug"
@@ -76,7 +75,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 
 
     buildFeatures {
@@ -137,6 +135,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:19.3.1'
 
 
+    // // Glide App
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
     testImplementation 'junit:junit:4.12'

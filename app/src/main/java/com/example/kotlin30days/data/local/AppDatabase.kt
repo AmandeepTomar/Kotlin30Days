@@ -1,17 +1,22 @@
 package com.example.kotlin30days.data.local
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.kotlin30days.data.local.daos.UserDao
-import com.example.kotlin30days.data.local.model.User
+import com.example.kotlin30days.data.local.daos.UserDetailsDao
+import com.example.kotlin30days.data.local.daos.UserRepoDaos
+import com.example.kotlin30days.data.local.model.UserDetails
+import com.example.kotlin30days.data.local.model.UserRepo
+import com.example.kotlin30days.data.local.model.Users
 
-@Database(entities = [User::class],version = 1,exportSchema = false)
+@Database(entities = [Users::class,UserRepo::class,UserDetails::class],version = 1,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
 
       abstract fun userDao(): UserDao
+      abstract fun userRepoDao():UserRepoDaos
+      abstract fun userDetailsDao():UserDetailsDao
 
       companion object {
 

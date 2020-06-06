@@ -13,12 +13,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.kotlin30days.R
 import com.example.kotlin30days.databinding.FragmentLoginBinding
+import com.example.kotlin30days.di.Injectable
+import com.example.kotlin30days.utility.AppPref
 import com.example.kotlin30days.utility.Logger
 import com.example.kotlin30days.utility.Resource
 import com.example.kotlin30days.utility.showSnackBar
 import com.example.kotlin30days.view.login.model.LoginResponse
 import com.example.kotlin30days.view.login.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,10 +33,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(),Injectable {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    @Inject
+    lateinit var appPref: AppPref
 
     private lateinit var bindingFragmentlogin: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
@@ -72,6 +78,7 @@ class LoginFragment : Fragment() {
                         val response = it.data as LoginResponse
                         Logger.setLog(message = response.toString())
                       resetEditText()
+                        appPref.setLogin(true)
                         view.findNavController().navigate(R.id.action_loginFragment2_to_homeFragment)
 
                     }

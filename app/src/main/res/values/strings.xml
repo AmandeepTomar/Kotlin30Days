@@ -28,4 +28,7 @@
     <string name="_30_days_kotlin">30 Days Kotlin</string>
     <string name="firebase_authentication_login">Firebase Authentication Login</string>
     <string name="please_enter_password">Please Enter Password</string>
+    <string name="details">Details</string>
+    <string name="list_of_repos">List of Repos</string>
+    <string name="web_view">Web View</string>
 </resources>

@@ -40,6 +40,9 @@ In future  will update more this.
 - Material Design Library 
 - FireBase Auth for login and registration
 
+# Preview 
+![](https://github.com/AmandeepTomar/Kotlin30Days/blob/master/preview/30DaysKotlin.gif)
+
 Thanks @Google developers India #30DaysKotlin for provding such a great platform for learning.
 
 

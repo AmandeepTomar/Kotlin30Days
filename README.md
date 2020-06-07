@@ -25,3 +25,18 @@ Build type and variant is an exciting topic so as of now i just keep it simple a
 
 In future  will update more this. 
 
+# Libraries
+- MVVM
+- Android Architecture Components
+- Android Data Binding
+- Dagger 2 for dependency injection
+- Retrofit for REST api communication
+- Glide for image loading
+- Room for database
+- Lottee for animation
+- kotlin coroutines for background task 
+- View Binding
+- Navigation Components
+- Material Design Library 
+
+

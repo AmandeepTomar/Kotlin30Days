@@ -40,6 +40,6 @@ In future  will update more this.
 - Material Design Library 
 - FireBase Auth for login and registration
 
-Thanks #30DaysKotlin for provding such a learning  platform. 
+Thanks @Google developers India #30DaysKotlin for provding such a great platform for learning.
 
 

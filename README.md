@@ -38,5 +38,8 @@ In future  will update more this.
 - View Binding
 - Navigation Components
 - Material Design Library 
+- FireBase Auth for login and registration
+
+Thanks for #30DaysKotlin 
 
 

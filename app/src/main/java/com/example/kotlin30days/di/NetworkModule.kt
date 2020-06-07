@@ -4,7 +4,9 @@ import com.example.kotlin30days.BuildConfig
 import com.example.kotlin30days.data.network.api.ApiInterface
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.jetbrains.annotations.NotNull
 import retrofit2.Retrofit
@@ -27,6 +29,17 @@ class NetworkModule {
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) builder.addInterceptor(httpLoggingInterceptor)
+        builder.addInterceptor(object : Interceptor{
+            override fun intercept(chain: Interceptor.Chain): Response {
+                var request=chain.request()
+                val url=request.url().newBuilder().addQueryParameter("appId","swsgj").addQueryParameter("ln","ui").build()
+                request=request.newBuilder().url(url).method(request.method(), request.body()).build()
+                println("----- ${request.body()} : encoded path ${request.url().encodedPath()} : encoded query : ${request.url().encodedQuery()} : request method : ${request.method()}")
+                println(" ---- " +request.newBuilder().url(request.url()).method(request.method(), request.body()).build());
+                return chain.proceed(request)
+            }
+
+        })
         return builder.build()
     }
 
@@ -46,4 +59,7 @@ class NetworkModule {
     fun provideApiService(retrofit: Retrofit): ApiInterface {
         return retrofit.create(ApiInterface::class.java)
     }
+
+
+
 }

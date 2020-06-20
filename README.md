@@ -25,6 +25,10 @@ Build type and variant is an exciting topic so as of now i just keep it simple a
 
 In future  will update more this. 
 
+# Preview 
+
+![](https://github.com/AmandeepTomar/Kotlin30Days/blob/master/preview/preview.gif)
+
 # Libraries
 - MVVM
 - Android Architecture Components
